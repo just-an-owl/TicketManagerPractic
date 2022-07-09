@@ -1,13 +1,12 @@
 package com.company.untitled1.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,19 +19,26 @@ public class Passenger {
     @Id
     private UUID id;
 
+    @InstanceName
     @NotEmpty
     @NotNull
     @Column(name = "FULL_NAME")
     private String fullName;
 
-    @PositiveOrZero
-    @Positive
     @NotNull
     @Column(name = "NUMBER_OF_PASSPORT")
-    private Integer numberOfPassport;
+    private String numberOfPassport;
 
     @OneToMany(mappedBy = "prassenger")
     private List<Trip> trip;
+
+    public void setNumberOfPassport(String numberOfPassport) {
+        this.numberOfPassport = numberOfPassport;
+    }
+
+    public String getNumberOfPassport() {
+        return numberOfPassport;
+    }
 
     public List<Trip> getTrip() {
         return trip;
@@ -40,14 +46,6 @@ public class Passenger {
 
     public void setTrip(List<Trip> trip) {
         this.trip = trip;
-    }
-
-    public Integer getNumberOfPassport() {
-        return numberOfPassport;
-    }
-
-    public void setNumberOfPassport(Integer numberOfPassport) {
-        this.numberOfPassport = numberOfPassport;
     }
 
     public String getFullName() {

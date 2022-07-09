@@ -1,6 +1,7 @@
 package com.company.untitled1.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
@@ -9,10 +10,12 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "TICKET", indexes = {
-        @Index(name = "IDX_TICKET_TRIP_ID", columnList = "TRIP_ID")
+        @Index(name = "IDX_TICKET_TRIP_ID", columnList = "TRIP_ID"),
+        @Index(name = "IDX_TICKET_ROUTE", columnList = "ROUTE_ID")
 })
 @Entity
 public class Ticket {
+    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
@@ -33,14 +36,24 @@ public class Ticket {
     @Column(name = "ARRIVAL_DATE")
     private LocalDateTime arrivalDate;
 
-    @Column(name = "KIND_OF_TRANSPORT")
-    private String kindOfTransport;
-
     @Column(name = "PRICE")
     private Double price;
+
     @JoinColumn(name = "TRIP_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Trip trip;
+
+    @JoinColumn(name = "ROUTE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Route route;
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
 
     public Trip getTrip() {
         return trip;
@@ -56,14 +69,6 @@ public class Ticket {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getKindOfTransport() {
-        return kindOfTransport;
-    }
-
-    public void setKindOfTransport(String kindOfTransport) {
-        this.kindOfTransport = kindOfTransport;
     }
 
     public LocalDateTime getArrivalDate() {

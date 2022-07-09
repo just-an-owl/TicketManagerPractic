@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://passengerBrowse.caption"
+        focusComponent="passengersTable">
+    <data readOnly="true">
+        <collection id="passengersDc"
+                    class="com.company.untitled1.entity.Passenger">
+            <fetchPlan extends="_base"/>
+            <loader id="passengersDl">
+                <query>
+                    <![CDATA[select e from Passenger e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="passengersTable" spacing="true">
+        <filter id="filter"
+                dataLoader="passengersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="passengersTable"
+                    width="100%"
+                    dataContainer="passengersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="fullName"/>
+                <column id="numberOfPassport"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="passengersTable.create"/>
+                <button id="editBtn" action="passengersTable.edit"/>
+                <button id="removeBtn" action="passengersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

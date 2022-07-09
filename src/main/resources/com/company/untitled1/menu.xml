@@ -4,6 +4,11 @@
     <menu id="application" caption="msg://com.company.untitled1/menu.application" insertBefore="administration">
         <item screen="User.browse" caption="msg://com.company.untitled1.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="Halt.browse" caption="msg://com.company.untitled1.screen.halt/haltBrowse.menu"/>
+        <item screen="Trip.browse" caption="msg://com.company.untitled1.screen.trip/tripBrowse.menu"/>
+        <item screen="Ticket.browse" caption="msg://com.company.untitled1.screen.ticket/ticketBrowse.menu"/>
+        <item screen="Passenger.browse" caption="msg://com.company.untitled1.screen.passenger/passengerBrowse.menu"/>
+        <item screen="Route.browse" caption="msg://com.company.untitled1.screen.route/routeBrowse.menu"/>
     </menu>
 
 </menu-config>
