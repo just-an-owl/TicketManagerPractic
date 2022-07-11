@@ -26,4 +26,53 @@
 
         <dropColumn columnName="POINT_OF_DEPARTURE" tableName="TICKET"/>
     </changeSet>
+    <changeSet id="5" author="untitled1">
+        <insert tableName="PASSENGER">
+            <column name="FULL_NAME" value="иваныч"></column>
+            <column name="ID" value="4b781283-af04-4c3e-b6ff-91ada8959a87"></column>
+            <column name="NUMBER_OF_PASSPORT" value="123456789123"></column>
+        </insert>
+        <insert tableName="PASSENGER">
+            <column name="ID" value="573de091-214c-4ef0-8164-daaa5d6e95b8"></column>
+            <column name="FULL_NAME" value="Васильич"></column>
+            <column name="NUMBER_OF_PASSPORT" value="951753852456"></column>
+        </insert>
+        <insert tableName="HALT">
+            <column name="ID" value="6e623eeb-9463-4b0b-befa-1db42150fe29"></column>
+            <column name="CITY" value="Самара"></column>
+            <column name="COORDINATES" value="132165482951753"></column>
+            <column name="NAME" value="Аврора"></column>
+            
+        </insert>
+        <insert tableName="HALT">
+            <column name="ID" value="9965da34-c604-4c64-88ef-6a1a4433f5f4"></column>
+            <column name="CITY" value="Самара"></column>
+            <column name="COORDINATES" value="852456962"></column>
+            <column name="NAME" value="Площадь Куйбышева"></column>
+
+        </insert>
+        <insert tableName="ROUTE">
+            <column name="ID" value="676cbfdf-bf16-4513-859f-2d0f01c276e8"></column>
+            <column name="FOLLOW_TYPE" value="INTERCITY"></column>
+            <column name="ROUTE_NAME" value="226"></column>
+            <column name="TYPE_OF_TRANSPORT" value="BUS"></column>
+        </insert>
+        <insert tableName="TRIP">
+            <column name="ID" value="a4ac84ba-61ac-47a0-af40-72fb465db44e"></column>
+            <column name="NAME" value="Отпуск"></column>
+            <column name="PRASSENGER_ID" value="4b781283-af04-4c3e-b6ff-91ada8959a87"></column>
+        </insert>
+        <insert tableName="TICKET">
+            <column name="ID" value="fbe15693-f1b0-4be9-b458-aa7d185c1f64"></column>
+            <column name="ARRIVAL_DATE" value="07.11.2022 00:00"></column>
+            <column name="NUMBER_" value="19627563"></column>
+            <column name="DEPARTURE_DATE" value="07.11.2022 00:00"></column>
+            <column name="POINT_OF_ARRIVAL_ID" value="6e623eeb-9463-4b0b-befa-1db42150fe29"></column>
+            <column name="PRICE" value="35"></column>
+            <column name="POINT_OF_DEPARTURE_ID" value="9965da34-c604-4c64-88ef-6a1a4433f5f4"></column>
+            <column name="ROUTE_ID" value="676cbfdf-bf16-4513-859f-2d0f01c276e8"></column>
+            <column name="TRIP_ID" value="a4ac84ba-61ac-47a0-af40-72fb465db44e"></column>
+
+        </insert>
+    </changeSet>
 </databaseChangeLog>
