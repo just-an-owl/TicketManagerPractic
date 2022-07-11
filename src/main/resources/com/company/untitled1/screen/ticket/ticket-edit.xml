@@ -6,6 +6,8 @@
         <instance id="ticketDc"
                   class="com.company.untitled1.entity.Ticket">
             <fetchPlan extends="_base">
+                <property name="pointOfDeparture" fetchPlan="_base"/>
+                <property name="pointOfArrival" fetchPlan="_base"/>
                 <property name="trip" fetchPlan="_base"/>
                 <property name="route" fetchPlan="_base"/>
             </fetchPlan>
@@ -31,9 +33,19 @@
         <form id="form" dataContainer="ticketDc">
             <column width="350px">
                 <textField id="numberField" property="number"/>
-                <textField id="pointOfDepartureField" property="pointOfDeparture"/>
+                <entityPicker id="pointOfDepartureField" property="pointOfDeparture">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
                 <dateField id="departureDateField" property="departureDate"/>
-                <textField id="pointOfArrivalField" property="pointOfArrival"/>
+                <entityPicker id="pointOfArrivalField" property="pointOfArrival">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
                 <dateField id="arrivalDateField" property="arrivalDate"/>
                 <textField id="priceField" property="price"/>
                 <entityPicker id="tripField" property="trip">

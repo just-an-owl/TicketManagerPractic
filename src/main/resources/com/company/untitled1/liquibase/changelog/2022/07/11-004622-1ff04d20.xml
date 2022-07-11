@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="untitled1">
+        <addColumn tableName="TICKET">
+            <column name="POINT_OF_ARRIVAL_ID" type="UUID"/>
+            <column name="POINT_OF_DEPARTURE_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="untitled1">
+        <addForeignKeyConstraint baseColumnNames="POINT_OF_DEPARTURE_ID" baseTableName="TICKET"
+                                 constraintName="FK_TICKET_ON_POINTOFDEPARTURE" referencedColumnNames="ID"
+                                 referencedTableName="HALT"/>
+    </changeSet>
+    <changeSet id="3" author="untitled1">
+        <addForeignKeyConstraint baseColumnNames="POINT_OF_ARRIVAL_ID" baseTableName="TICKET"
+                                 constraintName="FK_TICKET_ON_POINT_OF_ARRIVAL" referencedColumnNames="ID"
+                                 referencedTableName="HALT"/>
+    </changeSet>
+    <changeSet id="4" author="untitled1">
+        <dropColumn columnName="POINT_OF_ARRIVAL" tableName="TICKET"/>
+
+        <dropColumn columnName="POINT_OF_DEPARTURE" tableName="TICKET"/>
+    </changeSet>
+</databaseChangeLog>

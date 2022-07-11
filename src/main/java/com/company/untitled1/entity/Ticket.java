@@ -24,14 +24,16 @@ public class Ticket {
     @Column(name = "NUMBER_")
     private Integer number;
 
-    @Column(name = "POINT_OF_DEPARTURE")
-    private String pointOfDeparture;
+    @JoinColumn(name = "POINT_OF_DEPARTURE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Halt pointOfDeparture;
 
     @Column(name = "DEPARTURE_DATE")
     private LocalDateTime departureDate;
 
-    @Column(name = "POINT_OF_ARRIVAL")
-    private String pointOfArrival;
+    @JoinColumn(name = "POINT_OF_ARRIVAL_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Halt pointOfArrival;
 
     @Column(name = "ARRIVAL_DATE")
     private LocalDateTime arrivalDate;
@@ -46,6 +48,22 @@ public class Ticket {
     @JoinColumn(name = "ROUTE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Route route;
+
+    public void setPointOfArrival(Halt pointOfArrival) {
+        this.pointOfArrival = pointOfArrival;
+    }
+
+    public Halt getPointOfArrival() {
+        return pointOfArrival;
+    }
+
+    public void setPointOfDeparture(Halt pointOfDeparture) {
+        this.pointOfDeparture = pointOfDeparture;
+    }
+
+    public Halt getPointOfDeparture() {
+        return pointOfDeparture;
+    }
 
     public Route getRoute() {
         return route;
@@ -79,28 +97,12 @@ public class Ticket {
         this.arrivalDate = arrivalDate;
     }
 
-    public String getPointOfArrival() {
-        return pointOfArrival;
-    }
-
-    public void setPointOfArrival(String pointOfArrival) {
-        this.pointOfArrival = pointOfArrival;
-    }
-
     public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
     public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
-    }
-
-    public String getPointOfDeparture() {
-        return pointOfDeparture;
-    }
-
-    public void setPointOfDeparture(String pointOfDeparture) {
-        this.pointOfDeparture = pointOfDeparture;
     }
 
     public Integer getNumber() {
