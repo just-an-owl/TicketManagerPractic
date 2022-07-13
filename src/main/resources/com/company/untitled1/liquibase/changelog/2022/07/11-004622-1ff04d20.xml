@@ -76,9 +76,5 @@
         </insert>
 
     </changeSet>
-    <changeSet id="6" author="untitled1">
-        <insert tableName="">
-            <column name=""></column>
-        </insert>
-    </changeSet>
+
 </databaseChangeLog>
