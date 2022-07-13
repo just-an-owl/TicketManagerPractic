@@ -63,7 +63,7 @@
             </column>
         </form>
         <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitAndCloseBtn" caption="Send" />
             <button id="closeBtn" action="windowClose"/>
         </hbox>
     </layout>

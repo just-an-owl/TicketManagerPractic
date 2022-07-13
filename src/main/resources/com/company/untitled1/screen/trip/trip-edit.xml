@@ -7,6 +7,11 @@
                   class="com.company.untitled1.entity.Trip">
             <fetchPlan extends="_base">
                 <property name="prassenger" fetchPlan="_base"/>
+                <property name="tickets" fetchPlan="_base">
+                    <property name="pointOfDeparture" fetchPlan="_base"/>
+                    <property name="pointOfArrival" fetchPlan="_base"/>
+                    <property name="route" fetchPlan="_base"/>
+                </property>
             </fetchPlan>
             <loader/>
         </instance>
